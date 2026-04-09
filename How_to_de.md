@@ -1,19 +1,41 @@
-# MemPalace – So verbindest du es und nutzt es im Alltag (Deutsch)
+# MemPalace How-To (Deutsch)
 
-Diese Anleitung zeigt dir zwei Wege:
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![CLI Guide](https://img.shields.io/badge/Guide-CLI%20%26%20MCP-success)](README.md)
+[![Local First](https://img.shields.io/badge/Runtime-Local%20First-orange)](README.md)
 
-1. **Direkt per CLI** (zum Einrichten und Testen)
-2. **Verbunden mit deinem AI-Tool** über MCP (für den täglichen Einsatz)
+Ein professioneller, praxisnaher Leitfaden für Setup, Datenimport und tägliche Nutzung von MemPalace.
 
 ---
 
-## 1) Installation
+## Inhalt
+
+1. [Voraussetzungen](#voraussetzungen)
+2. [Installation](#installation)
+3. [Palace initialisieren](#palace-initialisieren)
+4. [Daten importieren (`mine`)](#daten-importieren-mine)
+5. [Suchen und Status prüfen](#suchen-und-status-prüfen)
+6. [Mit AI-Tools verbinden (MCP)](#mit-ai-tools-verbinden-mcp)
+7. [Empfohlener Daily Workflow](#empfohlener-daily-workflow)
+8. [Troubleshooting](#troubleshooting)
+
+---
+
+## Voraussetzungen
+
+- Python **3.10+**
+- Terminal mit Zugriff auf deine Projekt- und Chat-Verzeichnisse
+- Optional: Claude/Cursor/Gemini/ChatGPT-Umgebung mit MCP-Unterstützung
+
+---
+
+## Installation
 
 ```bash
 pip install mempalace
 ```
 
-Prüfen, ob es installiert ist:
+Verifizieren:
 
 ```bash
 mempalace --help
@@ -21,100 +43,96 @@ mempalace --help
 
 ---
 
-## 2) Ein Palace-Verzeichnis anlegen
+## Palace initialisieren
 
 ```bash
 mempalace init ~/projects/myapp
 ```
 
-Damit erzeugst du die MemPalace-Struktur für dein Projekt.
+Das legt die Grundstruktur für dein Projektgedächtnis an.
 
 ---
 
-## 3) Daten einlesen („mine“)
+## Daten importieren (`mine`)
 
-### Projektdateien (Code, Doku, Notizen)
+### 1) Projektdateien (Code, Docs, Notes)
 
 ```bash
 mempalace mine ~/projects/myapp
 ```
 
-### Chats importieren (Claude, ChatGPT, Slack-Exporte)
+### 2) Konversationen (Claude, ChatGPT, Slack-Exporte)
 
 ```bash
 mempalace mine ~/chats/ --mode convos
 ```
 
-### Chats importieren + automatische Extraktion
+### 3) Konversationen + inhaltliche Extraktion
 
 ```bash
 mempalace mine ~/chats/ --mode convos --extract general
 ```
 
-`--extract general` hilft dir, Entscheidungen, Meilensteine und Probleme schneller wiederzufinden.
+`--extract general` hilft, Entscheidungen, Meilensteine und Probleme später gezielter zu finden.
 
 ---
 
-## 4) Inhalte durchsuchen
+## Suchen und Status prüfen
+
+### Suche
 
 ```bash
 mempalace search "why did we switch to GraphQL"
 ```
 
-Du kannst natürlich auf Deutsch suchen, z. B.:
+Oder auf Deutsch:
 
 ```bash
 mempalace search "Warum haben wir auf GraphQL gewechselt?"
 ```
 
----
-
-## 5) Status prüfen
+### Status
 
 ```bash
 mempalace status
 ```
 
-Damit siehst du, ob dein Palace korrekt angelegt ist und Daten enthält.
-
 ---
 
-## 6) Mit AI-Tools verbinden (MCP)
+## Mit AI-Tools verbinden (MCP)
 
-Wenn du MemPalace im Alltag mit Claude/ChatGPT/Cursor/Gemini nutzen willst, verbindest du es einmal über MCP.
-
-Beispiel (Claude CLI):
+Beispiel mit Claude CLI:
 
 ```bash
 claude mcp add mempalace -- python -m mempalace.mcp_server
 ```
 
-Danach kann dein Assistent die MemPalace-Tools direkt aufrufen, statt dass du ständig manuell `mempalace search ...` eintippen musst.
+Danach kann dein Assistent MemPalace-Tools direkt verwenden, statt jedes Mal manuell `mempalace search ...` auszuführen.
 
 ---
 
-## 7) Typischer Ablauf im Alltag
+## Empfohlener Daily Workflow
 
-1. Einmalig: `pip install` + `mempalace init`
-2. Regelmäßig: neue Daten mit `mempalace mine ...` einlesen
-3. Im Chat mit AI: Fragen stellen wie
-   - „Was haben wir letzten Monat zur Auth-Strategie entschieden?“
-   - „Zeig mir die Diskussion, warum wir GraphQL gewählt haben.“
-4. Bei Bedarf direkt per CLI nachschlagen: `mempalace search "..."`
+1. **Einmalig:** `pip install mempalace` und `mempalace init ...`
+2. **Regelmäßig:** neue Inhalte per `mempalace mine ...` importieren
+3. **Im AI-Chat:** Fragen zur Historie, Entscheidungen und Kontext stellen
+4. **Bei Bedarf manuell:** punktgenaue Suche mit `mempalace search "..."`
 
 ---
 
-## Fehlerbehebung (kurz)
+## Troubleshooting
 
-- **Befehl nicht gefunden:** Prüfe, ob `pip` in dieselbe Python-Umgebung installiert hat, die dein Terminal nutzt.
-- **Leere Suchergebnisse:** Stelle sicher, dass du vorher mit `mempalace mine ...` Inhalte importiert hast.
-- **MCP klappt nicht:** Server-Eintrag erneut anlegen und Terminal/Tool neu starten.
+- **`mempalace: command not found`**  
+  Prüfe Python-/Pip-Umgebung und PATH.
+- **Leere Suchtreffer**  
+  Erst Inhalte mit `mempalace mine ...` importieren.
+- **MCP-Verbindung funktioniert nicht**  
+  MCP-Eintrag neu anlegen, CLI/Editor neu starten.
 
 ---
 
-## Optional: Schnellstart-Skript
+## Optionaler Schnellstart
 
-Wenn du die Kommandos als Vorlage willst, nutze:
+Falls du eine direkte Vorlage willst:
 
-- `examples/quickstart.sh`
-
+- [`examples/quickstart.sh`](examples/quickstart.sh)
