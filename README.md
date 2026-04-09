@@ -104,6 +104,8 @@ mempalace search "why did we switch to GraphQL"
 mempalace status
 ```
 
+Prefer a copy/paste script? See [`examples/quickstart.sh`](examples/quickstart.sh). German guide: [`How_to_de.md`](How_to_de.md).
+
 Three mining modes: **projects** (code and docs), **convos** (conversation exports), and **general** (auto-classifies into decisions, preferences, milestones, problems, and emotional context). Everything stays on your machine.
 
 ---
