@@ -31,6 +31,9 @@ Other memory systems try to fix this by letting AI decide what's worth rememberi
 
 [Quick Start](#quick-start) · [The Palace](#the-palace) · [AAAK Dialect](#aaak-dialect-experimental) · [Benchmarks](#benchmarks) · [MCP Tools](#mcp-server)
 
+**Language versions:** [German README (`README.de.md`)](README.de.md)
+
+
 <br>
 
 ### Highest LongMemEval score ever published — free or paid.
@@ -103,6 +106,8 @@ mempalace search "why did we switch to GraphQL"
 # Your AI remembers
 mempalace status
 ```
+
+Prefer a copy/paste script? See [`examples/quickstart.sh`](examples/quickstart.sh). Guides: [German (`How_to_de.md`)](How_to_de.md) · [English (`How_to_en.md`)](How_to_en.md).
 
 Three mining modes: **projects** (code and docs), **convos** (conversation exports), and **general** (auto-classifies into decisions, preferences, milestones, problems, and emotional context). Everything stays on your machine.
 
